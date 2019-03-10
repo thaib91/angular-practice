@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DataService} from '../data.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  h1Style: boolean = false; //similar to state on React
+
+  //dependency injection in the constructor
+  
+  constructor(private data:  DataService) { }
 
   ngOnInit() {
   }
 
   firstClick(){
-    alert("Click")
+    this.data.firstClick();
   }
 
 }
