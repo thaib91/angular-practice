@@ -9,17 +9,19 @@ import {DataService} from '../data.service';
 })
 export class HomeComponent implements OnInit {
 
-  h1Style: boolean = false; //similar to state on React
+  // h1Style: boolean = false; //similar to state on React
 
+  users: Object;
   //dependency injection in the constructor
-  
+
   constructor(private data:  DataService) { }
 
+  //angular lifecycle hook, like a componentDidMount from React
   ngOnInit() {
-  }
-
-  firstClick(){
-    this.data.firstClick();
+    this.data.getUsers().subscribe(data => {
+      this.users = data;
+      console.log(this.users)
+    })
   }
 
 }
